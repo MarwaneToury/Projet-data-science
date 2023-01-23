@@ -1,0 +1,9 @@
+json
+dash
+plotly.express
+pandas
+dash_bootstrap_components
+matplotlib.pyplot
+seaborn
+folium
+plotly.graph_objects
