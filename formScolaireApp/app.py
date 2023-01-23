@@ -72,7 +72,7 @@ app.layout = html.Div(
                             children="Forme Scolaire Analyse", className="header-title"
                         ),
                         html.P(
-                            children="Analyser l'impact de la forme scolaire sur la réussite des élèves en fonction du numérique, de l'interstructure et de l'indice de position sociale.",
+                            children="Analyser l'impact de la forme scolaire sur la réussite des élèves en fonction du numérique et de l'indice de position sociale.",
                             className="header-description",
                         ),
                     ], className="header"
@@ -96,9 +96,9 @@ app.layout = html.Div(
                                             labelClassName="btn btn-outline-info",
                                             labelCheckedClassName="active",
                                             options=[
-                                                {"label": "Etat Des Lieux Générale", "value": 1},
-                                                {"label": "Lycée Professionel", "value": 2},
-                                                {"label": "Lycée Générale et Technologique", "value": 3},
+                                                {"label": "Etats des lieux", "value": 1},
+                                                {"label": "Lycée Professionnel", "value": 2},
+                                                {"label": "Lycée Général et Technologique", "value": 3},
                                                 {"label": "Collège", "value": 4},
                                             ],
                                             value=2,
@@ -173,23 +173,23 @@ def tabs(value):
         ]
     elif value == 2:
         return [
-            dbc.Tab(label="Analyse Générale", tab_id="tab-1", label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Taux De Réussite", tab_id="tab-2",label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Valeur Ajoutée", tab_id="tab-3",label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Taux De Réussite Attendu", tab_id="tab-4", label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Analyse générale", tab_id="tab-1", label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Taux de réussite", tab_id="tab-2",label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Valeur ajoutée", tab_id="tab-3",label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Taux De réussite attendu", tab_id="tab-4", label_style={"color": "#0DCAF0"}),
         ]
     elif value == 3:
         return [
-            dbc.Tab(label="Analyse Générale", tab_id="tab-1", label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Taux De Réussite", tab_id="tab-2",label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Valeur Ajoutée", tab_id="tab-3",label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Taux De Réussite Attendu", tab_id="tab-4", label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Analyse générale", tab_id="tab-1", label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Taux de réussite", tab_id="tab-2",label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Valeur ajoutée", tab_id="tab-3",label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Taux de réussite attendu", tab_id="tab-4", label_style={"color": "#0DCAF0"}),
         ]
     elif value == 4:
         return [
-            dbc.Tab(label="Analyse Générale Sur Les Proportions", tab_id="tab-1", label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Labélisation", tab_id="tab-2",label_style={"color": "#0DCAF0"}),
-            dbc.Tab(label="Indice De Position Sociale", tab_id="tab-3",label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Analyse générale sur les proportions", tab_id="tab-1", label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Labellisation", tab_id="tab-2",label_style={"color": "#0DCAF0"}),
+            dbc.Tab(label="Indice de position sociale", tab_id="tab-3",label_style={"color": "#0DCAF0"}),
         ]
 
 
@@ -201,13 +201,13 @@ def data_choice2(value, value2):
     if (value == "tab-1" or value == "tab-3" or value == "tab-4") and value2 == 1:
         
         # La répartition des Ecole, lycce et collège en Occitanie
-        fig1 = px.pie(df_proportion_etablissement, values='effectif', names="type etablissement")
+        fig1 = px.pie(df_proportion_etablissement, values='effectif', names="type d'etablissement")
         fig1.update_layout(
             autosize=False,
             width=500,
             height=250,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La proportion de chaque type d'établissementé scolaire en Occitanie",
+            title="La proportion de chaque type d'établissement scolaire en Occitanie",
             title_font_size=13,
             paper_bgcolor="#FFF7E9",
         )
@@ -219,7 +219,7 @@ def data_choice2(value, value2):
             width=500,
             height=250,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La proportion des lycées labelisés et non labelisés en Occitanie",
+            title="La proportion des lycées labellisés et non labellisés en Occitanie",
             title_font_size=13,
             paper_bgcolor="#FFF7E9",
         )
@@ -260,7 +260,7 @@ def data_choice2(value, value2):
         values = [nbre_lycee_polyvalent,nbre_lycee_non_polyvalent]
 
         # Affichage du camamber data pour les lycées polyvalents et non polyvalents
-        fig4 = go.Figure(data=[go.Pie(labels=labels, values=values, title = "La proportions des Lycées polyvalents et non polyvalents")])
+        fig4 = go.Figure(data=[go.Pie(labels=labels, values=values, title = "La proportion des lycées polyvalents et non polyvalents")])
         fig4.update_layout(
             autosize=False,
             width=400,
@@ -279,12 +279,12 @@ def data_choice2(value, value2):
         nbre_lycee_gen_uniques = nbre_lycee_gen_polyvalent_inclus - nbre_lycee_polyvalent
 
         #camamber data parametres pour les lycées polyvalents, professionels et générales
-        labels=["Nbr lycées générales et technologiques","Nbr lycées professionels",
+        labels=["Nbr lycées généraux et technologiques","Nbr lycées professionnels",
             "Nbr lycées polyvalents"]
         values=[nbre_lycee_gen_uniques,nbre_lycee_pro_uniques,nbre_lycee_polyvalent]
 
         # Affichage du camamber data pour les lycées polyvalents, professionels et générales
-        fig5 = go.Figure(data=[go.Pie(labels=labels, values=values, title = "La proportions des Lycées polyvalents, professionels , générales et technologiques")])
+        fig5 = go.Figure(data=[go.Pie(labels=labels, values=values, title = "La proportion des lycées polyvalents, professionnels , généraux et technologiques")])
         fig5.update_layout(
             autosize=False,
             width=500,
@@ -364,7 +364,7 @@ def data_choice2(value, value2):
         content = html.Div([
             html.Div([
                 html.Div([  
-                    html.H4("Les positions géographiques des lycées labelisés en Occitanie"),
+                    html.H4("Les positions géographiques des lycées labellisés en Occitanie"),
                     html.Iframe(id='map', srcDoc=m._repr_html_(), width='1000px', height='400px')
                 ], className="columns"),
             ],
@@ -385,7 +385,7 @@ def data_choice2(value, value2):
         nbre_lycee_professionel_labelise = df_resultPro_all['rne'].nunique()
         nbre_lycee_professionnel_non_labelise = nbre_lycee_professionnel - nbre_lycee_professionel_labelise
         values = [nbre_lycee_professionnel_non_labelise,nbre_lycee_professionel_labelise]
-        labels = ["Lycées Pro Non Labelisés", "Lycées Pro Labelisés"]
+        labels = ["Lycées Pro Non Labellisés", "Lycées Pro Labellisés"]
         fig2 = go.Figure(data=[go.Pie(labels=labels, values=values)])
         
         # update the layout of the figure
@@ -394,7 +394,7 @@ def data_choice2(value, value2):
             width=500,
             height=250,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="Les proportions des Lycées Pro labelisés pour lequels on connait les résultats",
+            title="Les proportions des Lycées Pro labellisés pour lequels on connaît les résultats",
             title_font_size=13,
             paper_bgcolor="#FFF7E9",
         )
@@ -418,7 +418,7 @@ def data_choice2(value, value2):
             width=500,
             height=300,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La variation du nombre des lycées labelisés selon les années",  
+            title="La variation du nombre de lycées labelisés selon les années",  
             title_font_size=15,  
             paper_bgcolor="#FFF7E9", 
         )
@@ -433,13 +433,13 @@ def data_choice2(value, value2):
         #plotting a histogram 
         fig4 = px.histogram(df_proportion_lycee_non_labelise_annee, x="annee_y", y="code_etablissement",
                         color="annee_y",
-                            labels={"code_etablissement" : "nombre de lycee non labelisés","annee_y":"Année"})
+                            labels={"code_etablissement" : "nombre de lycee non labellisés","annee_y":"Année"})
         fig4.update_layout(
             autosize=False,
             width=500,
             height=300,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La variation du nombre des lycées non labelisés selon les années", 
+            title="La variation du nombre des lycées non labellisés selon les années", 
             title_font_size=15,   
             paper_bgcolor="#FFF7E9", 
         )
@@ -485,13 +485,13 @@ def data_choice2(value, value2):
 
         fig6 = px.box(df_resultPro, x="departement_y",y="taux_brut_de_reussite_total_secteurs", color="departement_y",
         facet_row="resultat_apres_label",
-        labels={"resultat_apres_label" : "Labélisation","taux_brut_de_reussite_total_secteurs" : "Taux de réussite", "departement_y" : "Département"})
+        labels={"resultat_apres_label" : "Labéllisation","taux_brut_de_reussite_total_secteurs" : "Taux de réussite", "departement_y" : "Département"})
         fig6.update_layout(
             autosize=False,
             width=1000,
             height=500,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La moyenne des taux de réussites selon les départements - avant et après obtention labels",
+            title="La moyenne des taux de réussites selon les départements - avant et après obtention du label",
             # change the size of the title
             title_font_size=15,    
             paper_bgcolor="#FFF7E9", 
@@ -590,7 +590,7 @@ def data_choice2(value, value2):
             width=500,
             height=250,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La valeurs ajoutés de réussites avant et après obtention labels",
+            title="La valeur ajoutée avant et après obtention du label",
             # change the size of the title
             title_font_size=13,
             legend_font_size=10,
@@ -606,7 +606,7 @@ def data_choice2(value, value2):
             width=500,
             height=250,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La valeurs ajoutés de réussites avec et sans labels",
+            title="La valeur ajouté avec et sans label",
             # change the size of the title
             title_font_size=13,
             legend_font_size=10,
@@ -620,7 +620,7 @@ def data_choice2(value, value2):
             width=1000,
             height=400,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La moyenne des valeurs ajoutés de réussites selon les départements avant et après obtention labels",
+            title="La moyenne des valeurs ajoutés de réussites selon les départements avant et après obtention du label",
             # change the size of the title
             title_font_size=15,    
             legend_font_size=10,
@@ -652,7 +652,7 @@ def data_choice2(value, value2):
             width=500,
             height=400,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La variance du taux de réussite attendu avant et après obtention label",
+            title="La variance du taux de réussite attendu avant et après obtention du label",
             # change the size of the title
             title_font_size=13,    
             legend_font_size=10,
@@ -666,7 +666,7 @@ def data_choice2(value, value2):
             width=500,
             height=400,
             margin=dict(l=0, r=0, b=0, t=35, pad=0), 
-            title="La variance du taux de réussite attendu sans et avec labels",
+            title="La variance du taux de réussite attendu sans et avec label",
             # change the size of the title
             title_font_size=13,    
             legend_font_size=10,
@@ -696,7 +696,7 @@ def data_choice2(value, value2):
             width=520,
             height=250,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La proportions des Lycées labelisés parmis les d'enseignement général et technologique",
+            title="La proportion de lycées labellisés parmi les lycées d'enseignement général et technologique",
             # change the size of the title
             title_font_size=12,
             legend_font_size=10,
@@ -714,13 +714,13 @@ def data_choice2(value, value2):
         #plotting a histogram 
         fig2 = px.histogram(df_proportion_lycee_labelise_annee, x="annee_x", y="rne",
                         color="annee_x",
-                        labels={"rne" :"Nombre des lycées labelisés", "annee_x" : "Années"})
+                        labels={"rne" :"Nombre des lycées labellisés", "annee_x" : "Années"})
         fig2.update_layout(
             autosize=False,
             width=500,
             height=300,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La variation du nombre des lycées labelisés selon les années",
+            title="La variation du nombre de lycées labellisés selon les années",
             # change the size of the title
             title_font_size=13,
             legend_font_size=10,
@@ -736,13 +736,13 @@ def data_choice2(value, value2):
         #plotting a histogram 
         fig3 = px.histogram(df_proportion_lycee_non_labelise_annee, x="annee_y", y="UAI",
                         color="annee_y",
-                            labels={"UAI" :"Nombre des lycées non labelisés", "annee_y" : "Année"})
+                            labels={"UAI" :"Nombre des lycées non labellisés", "annee_y" : "Année"})
         fig3.update_layout(
             autosize=False,
             width=500,
             height=300,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La variation du nombre des lycées non labelisés selon les années",
+            title="La variation du nombre des lycées non labellisés selon les années",
             # change the size of the title
             title_font_size=13,
             legend_font_size=10,
@@ -771,13 +771,13 @@ def data_choice2(value, value2):
         fig1 = px.box(df_resultGen, x="departement_y", y="taux_reussite_toutes_series",
              color="departement_y",
                        facet_row="resultat_apres_label",
-                      labels={"departement_y" :"Département", "taux_reussite_toutes_series" : "Taux de réussite", "resultat_apres_label" : "Labelisation"})
+                      labels={"departement_y" :"Département", "taux_reussite_toutes_series" : "Taux de réussite", "resultat_apres_label" : "Labellisation"})
         fig1.update_layout(
             autosize=False,
             width=1000,
             height=500,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La moyenne des taux de réussites selon les départements - avant et après obtention labels",
+            title="La moyenne des taux de réussite selon les départements - avant et après obtention du label",
             # change the size of the title
             title_font_size=15,
             paper_bgcolor="#FFF7E9",
@@ -795,7 +795,7 @@ def data_choice2(value, value2):
             width=500,
             height=300,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La moyenne des taux de réussites avant et après obtention labels",
+            title="La moyenne des taux de réussite avant et après obtention du label",
             # change the size of the title
             title_font_size=13,
             paper_bgcolor="#FFF7E9",
@@ -808,7 +808,7 @@ def data_choice2(value, value2):
             width=500,
             height=300,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La variance des taux de réussites sans et avec labels",
+            title="La variance du taux de réussites sans et avec le label",
             # change the size of the title
             title_font_size=13,
             paper_bgcolor="#FFF7E9",
@@ -889,7 +889,7 @@ def data_choice2(value, value2):
             width=500,
             height=300,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La variance des valeurs ajoutés de réussites (toutes séries) sans et avec labels",
+            title="La variance des valeurs ajoutées (toutes séries) sans et avec labels",
             # change the size of the title
             title_font_size=13,
             legend_font_size=10,
@@ -902,7 +902,7 @@ def data_choice2(value, value2):
             width=1000,
             height=400,
             margin=dict(l=0, r=0, b=0, t=35, pad=0),
-            title="La moyenne des valeurs ajoutés de réussites selon les départements avant et après obtention labels",
+            title="La moyenne des valeurs ajoutés selon les départements avant et après obtention labels",
             # change the size of the title
             title_font_size=15,
             paper_bgcolor="#FFF7E9",
