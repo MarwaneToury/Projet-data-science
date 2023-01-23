@@ -24,7 +24,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import folium # for maps
 import plotly.graph_objects as go
-import kaleido
 
 
 # Chargement des données
