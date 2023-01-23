@@ -1,9 +1,8 @@
 json
 dash
-plotly.express
 pandas
 dash_bootstrap_components
-matplotlib.pyplot
+matplotlib
 seaborn
 folium
-plotly.graph_objects
+plotly
